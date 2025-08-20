@@ -23,13 +23,28 @@ export function Navigation() {
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/about' ? ' bg-secondary' : '')}>
-                <Link to="/about" id="nav-about">About</Link>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/visualizer' ? ' bg-secondary' : '')}>
+                <Link to="/visualizer" id="nav-visualizer">Visualizer</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/pricing' ? ' bg-secondary' : '')}>
-                <Link to="/pricing" id="nav-pricing">Pricing</Link>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/resources' ? ' bg-secondary' : '')}>
+                <Link to="/resources" id="nav-resources">Resources</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/namespaces' ? ' bg-secondary' : '')}>
+                <Link to="/namespaces" id="nav-namespaces">Namespaces</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/settings' ? ' bg-secondary' : '')}>
+                <Link to="/settings" id="nav-settings">Settings</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === '/about' ? ' bg-secondary' : '')}>
+                <Link to="/about" id="nav-about">About</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>

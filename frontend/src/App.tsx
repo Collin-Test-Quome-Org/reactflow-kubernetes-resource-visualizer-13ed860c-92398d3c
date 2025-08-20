@@ -5,6 +5,11 @@ import { AboutPage } from '@/pages/AboutPage';
 import { PricingPage } from '@/pages/PricingPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { SignupPage } from '@/pages/SignupPage';
+import { ResourcesListPage } from '@/pages/ResourcesListPage';
+import { ResourceDetailPage } from '@/pages/ResourceDetailPage';
+import { VisualizerPage } from '@/pages/VisualizerPage';
+import { NamespacesPage } from '@/pages/NamespacesPage';
+import { SettingsPage } from '@/pages/SettingsPage';
 import { Providers } from './Providers';
 
 export function App() {
@@ -18,6 +23,11 @@ export function App() {
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/resources" element={<ResourcesListPage />} />
+          <Route path="/resources/:id" element={<ResourceDetailPage />} />
+          <Route path="/visualizer" element={<VisualizerPage />} />
+          <Route path="/namespaces" element={<NamespacesPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </BrowserRouter>
     </Providers>
