@@ -1,30 +1,71 @@
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Link } from 'react-router-dom';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
+import { LockKeyhole } from 'lucide-react';
 
 export function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  // Fake login: accepts any email/pass
+  function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+    setTimeout(() => {
+      // Fake success
+      navigate('/');
+    }, 500);
+  }
+
   return (
-    <main className="min-h-screen w-full flex items-center justify-center bg-secondary">
-      <div className="bg-white rounded-xl shadow-lg px-8 py-10 w-full max-w-md flex flex-col items-center">
-        <img src="/branding/assets/logo-1.png" className="w-14 h-14 mb-6" />
-        <h1 className="text-2xl font-['Roboto_Mono'] font-bold text-primary mb-2">Welcome Back</h1>
-        <p className="text-slate-600 mb-6 text-center font-['Inter']">Sign in to your PodPilot dashboard and take command of your clusters.</p>
-        <form className="w-full flex flex-col gap-5">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="login-email" className="font-medium text-slate-700">Email</label>
-            <Input id="login-email" type="email" autoComplete="email" required placeholder="you@example.com" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="login-password" className="font-medium text-slate-700">Password</label>
-            <Input id="login-password" type="password" autoComplete="current-password" required placeholder="••••••••" />
-          </div>
-          <Button id="login-submit" type="submit" className="mt-2 bg-primary text-white hover:bg-indigo-700">Log In</Button>
-        </form>
-        <div className="mt-6 text-sm text-slate-500 font-['Inter']">
-          Don’t have an account?{' '}
-          <Link to="/signup" className="text-primary font-semibold hover:underline" id="login-signup-link">Sign up</Link>
-        </div>
-      </div>
-    </main>
+    <div className="flex min-h-screen bg-slate-50 items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-md"
+      >
+        <Card className="shadow-xl">
+          <CardHeader className="text-center flex flex-col items-center">
+            <LockKeyhole className="text-indigo-700 mb-2" size={36} />
+            <CardTitle className="font-mono text-2xl text-indigo-800">Welcome Back, Cloud Wrangler</CardTitle>
+          </CardHeader>
+          <form onSubmit={handleLogin}>
+            <CardContent>
+              <Input
+                id="login-email"
+                placeholder="Email"
+                type="email"
+                className="mb-4"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                autoFocus
+              />
+              <Input
+                id="login-password"
+                placeholder="Password"
+                type="password"
+                className="mb-1"
+                value={pass}
+                onChange={e => setPass(e.target.value)}
+                required
+              />
+              {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
+            </CardContent>
+            <CardFooter className="flex flex-col gap-2">
+              <Button id="login-btn" type="submit" className="w-full">
+                Sign In
+              </Button>
+              <span className="text-center text-xs text-slate-500">Not a member? <Link to="/signup" className="text-indigo-600 underline">Sign up</Link></span>
+            </CardFooter>
+          </form>
+        </Card>
+      </motion.div>
+    </div>
   );
 }
